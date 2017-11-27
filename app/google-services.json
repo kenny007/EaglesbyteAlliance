@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "180041053689",
+    "firebase_url": "https://eaglesbytealliance.firebaseio.com",
+    "project_id": "eaglesbytealliance",
+    "storage_bucket": "eaglesbytealliance.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180041053689:android:6b53ba1f2722a28b",
+        "android_client_info": {
+          "package_name": "alliance.eaglesbyte.com.eaglesbytealliance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "180041053689-gph4p8o2jgc3kpr9utkjok83v66jhhgh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOjV5NBSPhuU_zUvTrKzqhSUc6BENILs8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
