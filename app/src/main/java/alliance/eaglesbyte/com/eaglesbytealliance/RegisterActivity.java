@@ -1,5 +1,6 @@
 package alliance.eaglesbyte.com.eaglesbytealliance;
 
+import android.content.Intent;
 import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -69,6 +71,25 @@ public class RegisterActivity extends AppCompatActivity {
         hideSoftKeyboard();
     }
 
+    //This sends verification email once a new user is registered
+    private void sendVerificationEmail(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user!=null){
+            user.sendEmailVerification()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(RegisterActivity.this, "Verification Email Sent", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(RegisterActivity.this, "Couldn't send verification email", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    });
+        }
+
+    }
     private void registerNewEmail(String email, String password){
         showDialog();
 
@@ -81,7 +102,10 @@ public class RegisterActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             Log.d(TAG, "onComplete: AuthState: " + FirebaseAuth.getInstance().getCurrentUser()
                                     .getUid());
+                            sendVerificationEmail();
                             FirebaseAuth.getInstance().signOut();
+
+                            //redirect users to login screen
                         }else {
                             Toast.makeText(RegisterActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                         }
@@ -90,6 +114,17 @@ public class RegisterActivity extends AppCompatActivity {
                 });
 
 
+    }
+
+    /**
+     * Redirects the user to login screen
+     */
+    private void redirectLoginScreen(){
+        Log.d(TAG, "redirectLoginScreen: redirecting to login screen.");
+
+        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
     /**
      * Returns true if the user's email contains '@ttu.ee'
