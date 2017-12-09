@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="input_email" type="id" />
+    <item name="input_password" type="id" />
+    <item name="input_confirm_password" type="id" />
+    <item name="password" type="id">Password</item>
+    <item name="email_sign_in_button" type="id">Sign In</item>
+    <item name="link_register" type="id">Register</item>
+    <item name="forgot_password" type="id">Forgot Password</item>
+    <item name="resend_verification_email" type="id">Resend Verification</item>
+</resources>
