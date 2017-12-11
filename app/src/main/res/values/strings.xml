@@ -21,4 +21,6 @@
     <string name="email">Email</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="eaglesbyte_alliance_logo">eaglesbyte_alliance_logo</string>
+    <string name="cancel">CANCEL</string>
+    <string name="confirm">CONFIRM</string>
 </resources>

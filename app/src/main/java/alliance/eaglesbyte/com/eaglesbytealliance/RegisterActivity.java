@@ -90,6 +90,12 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
     }
+
+    /**
+     * This method is for registering a new user
+     * @param email
+     * @param password
+     */
     private void registerNewEmail(String email, String password){
         showDialog();
 
@@ -112,7 +118,6 @@ public class RegisterActivity extends AppCompatActivity {
                         hideDialog();
                     }
                 });
-
 
     }
 

@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
         TextView register = (TextView) findViewById(R.id.link_register);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,11 +78,14 @@ public class LoginActivity extends AppCompatActivity {
         resendEmailVerification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ResendVerificationDialog dialog = new ResendVerificationDialog();
+                dialog.show(getSupportFragmentManager(),"resend_email_verification");
+                //dialog.show(getSupportFragmentManager(),"dialog_resend_email_verification");
+                //dialog.show(getSupportFragmentManager(), "dialog_resend_email_verification");
             }
         });
 
-        hideSoftKeyboard();
+        //hideSoftKeyboard();
     }
 
     //This login registered users
@@ -100,7 +104,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     /**
@@ -112,10 +115,8 @@ public class LoginActivity extends AppCompatActivity {
         return s.equals("");
     }
 
-
     private void showDialog(){
         mProgressBar.setVisibility(View.VISIBLE);
-
     }
 
     private void hideDialog(){
@@ -164,7 +165,7 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseAuth.getInstance().removeAuthStateListener(mAuthListener);
     }
 
-    private void hideSoftKeyboard(){
+   /* private void hideSoftKeyboard(){
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-    }
+    }*/
 }
