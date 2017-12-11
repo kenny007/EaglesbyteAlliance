@@ -16,7 +16,7 @@ NOTE: For you to have a fully functional project that you can test, go to  https
 * Android Studio Version 2.3 *
 * Firebase SDK **
 * Google Play Services SDK *
-* Samsung Galaxy J5 *
+
 
 #Main Classes and Methods 
 * LoginActivity.java
