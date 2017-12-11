@@ -1,8 +1,10 @@
 package alliance.eaglesbyte.com.eaglesbytealliance;
 
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringDef;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 //check if the fields are filled out
                 if(!isEmpty(mEmail.getText().toString())
                         && !isEmpty(mPassword.getText().toString())){
@@ -135,7 +136,10 @@ public class LoginActivity extends AppCompatActivity {
               if(user != null){
                   if(user.isEmailVerified()){
                       Log.d(TAG, "onAuthStateChanged: signed_in: " + user.getUid());
-                      Toast.makeText(LoginActivity.this, "Authenticated with: " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                      DialogFragment dialogExist = (DialogFragment) getFragmentManager().findFragmentByTag("ResendVerificationDialg");
+                      if(dialogExist == null){
+                          Toast.makeText(LoginActivity.this, "Authenticated with: " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                      }
                   } else{
                       Toast.makeText(LoginActivity.this, "Check Your Email for a Verification Link", Toast.LENGTH_SHORT).show();
                       FirebaseAuth.getInstance().signOut();;
