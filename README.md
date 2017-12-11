@@ -11,12 +11,12 @@ NOTE: For you to have a fully functional project that you can test, go to  https
  necessary firebase configurations in *build.gradle* files
 
 #Requirements
-** Android Version 26 ("Oreo")**
-** Firebase Version 11.0.4 **
-** Android Studio Version 2.3 **
-** Firebase SDK **
-** Google Play Services SDK **
-** Samsung Galaxy J5 **
+* Android Version 26 ("Oreo") *
+* Firebase Version 11.0.4 *
+* Android Studio Version 2.3 *
+* Firebase SDK **
+* Google Play Services SDK *
+* Samsung Galaxy J5 *
 
 #Main Classes and Methods 
 * LoginActivity.java
