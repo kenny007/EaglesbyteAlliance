@@ -128,6 +128,7 @@ public class LoginActivity extends AppCompatActivity {
 
     /* Firebase setup*/
    private void instFirebaseAuth(){
+       Log.d(TAG, "instFirebaseAuth: started");
       mAuthListener = new FirebaseAuth.AuthStateListener() {
           @Override
           public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -136,10 +137,15 @@ public class LoginActivity extends AppCompatActivity {
               if(user != null){
                   if(user.isEmailVerified()){
                       Log.d(TAG, "onAuthStateChanged: signed_in: " + user.getUid());
-                      DialogFragment dialogExist = (DialogFragment) getFragmentManager().findFragmentByTag("ResendVerificationDialg");
+                      Toast.makeText(LoginActivity.this, "Authenticated with: " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                      Intent intent = new Intent(LoginActivity.this , DashboardActivity.class);
+                      startActivity(intent);
+                      finish(); //This is to prevent user from navigating back to the sign in screen.
+
+                     /* DialogFragment dialogExist = (DialogFragment) getFragmentManager().findFragmentByTag("ResendVerificationDialg");
                       if(dialogExist == null){
                           Toast.makeText(LoginActivity.this, "Authenticated with: " + user.getEmail(), Toast.LENGTH_SHORT).show();
-                      }
+                      }*/
                   } else{
                       Toast.makeText(LoginActivity.this, "Check Your Email for a Verification Link", Toast.LENGTH_SHORT).show();
                       FirebaseAuth.getInstance().signOut();;

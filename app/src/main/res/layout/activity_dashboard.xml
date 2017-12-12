@@ -4,70 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="alliance.eaglesbyte.com.eaglesbytealliance.RegisterActivity">
-
+    tools:context="alliance.eaglesbyte.com.eaglesbytealliance.DashboardActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
 
             <RelativeLayout
-                android:id="@+id/relLayout1"
+                android:id="@+id/relLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="20dp">
+                android:padding="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
 
                 <TextView
-                    android:id="@+id/textEmailReg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="30dp"
-                    android:text="@string/email_registration"
+                    android:textSize="25sp"
+                    android:text="@string/staff_dashboard"
                     android:textColor="@color/Black"
-                    android:textSize="25sp" />
+                    android:id="@+id/header"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
 
 
                 <EditText
-                    android:id="@+id/input_email"
+                    android:id="@+id/input_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/textEmailReg"
+                    android:layout_below="@+id/header"
                     android:layout_marginTop="30dp"
-                    android:hint="@string/prompt_email"
-                    android:inputType="textEmailAddress" />
+                    android:hint="Title"
+                    android:inputType="text" />
 
                 <EditText
-                    android:id="@+id/input_password"
+                    android:id="@+id/input_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/input_email"
+                    android:layout_below="@+id/input_title"
                     android:layout_marginTop="20dp"
-                    android:hint="@string/password"
-                    android:inputType="textPassword" />
+                    android:hint="Code"
+                    android:inputType="textLongMessage" />
 
                 <EditText
-                    android:id="@+id/input_confirm_password"
+                    android:id="@+id/input_credits"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/input_password"
+                    android:layout_below="@+id/input_code"
                     android:layout_marginTop="20dp"
-                    android:hint="@string/confirm_password"
-                    android:inputType="textPassword" />
+                    android:hint="ECTS Points"
+                    android:inputType="text" />
 
 
                 <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/btn_register"
+                    android:id="@+id/btn_addcourse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/input_confirm_password"
+                    android:layout_below="@+id/input_credits"
                     android:layout_marginTop="35dp"
                     android:background="@drawable/blue_button"
-                    android:text="@string/register" />
+                    android:text="Submit"
+
+                     />
 
             </RelativeLayout>
 
@@ -84,4 +88,31 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
         android:visibility="invisible"/>
+
+
 </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

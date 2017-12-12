@@ -7,8 +7,8 @@ the mail using the link on RegisterActivity.
 
 NOTE: For you to have a fully functional project that you can test, go to  https://console.firebase.google.com
  create a project and setup your app, download your custom * google-services.com * file and use it to replace
- mine found inside the app folder without doing this you won't be able to test this project. Also include the
- necessary firebase configurations in *build.gradle* files
+ mine found inside the app folder without doing this you won't be able to test this project. 
+ Also include the necessary firebase dependencies to both the app level and project level *build.gradle* files
 
 #Requirements
 * Android Version 26 ("Oreo") *

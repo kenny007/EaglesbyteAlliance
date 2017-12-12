@@ -23,4 +23,16 @@
     <string name="eaglesbyte_alliance_logo">eaglesbyte_alliance_logo</string>
     <string name="cancel">CANCEL</string>
     <string name="confirm">CONFIRM</string>
+    <string name="staff_dashboard">Add Course</string>
+    <string name="sign_out">Sign out</string>
+
+   <!-- Firebase Database Nodes-->
+ <string name="dbnode_courses">courses</string>
+
+   <!-- Firebase Database Fields-->
+    <string name="field_title">title</string>
+    <string name="field_code">code</string>
+    <string name="field_ects_credits">ects_credits</string>
+    <string name="field_prerequisite">prerequisite</string>
+    <string name="field_user_id">user_id</string>
 </resources>
