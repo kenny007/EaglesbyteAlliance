@@ -21,6 +21,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.Random;
+
 import alliance.eaglesbyte.com.eaglesbytealliance.models.Course;
 
 public class DashboardActivity extends AppCompatActivity {
@@ -85,7 +87,7 @@ public class DashboardActivity extends AppCompatActivity {
         course.setCode(code);
         course.setEcts_credits(credits);
         course.setPrerequisite("1");
-        course.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        course.setUser_id(generateRandomString());
 
         FirebaseDatabase.getInstance().getReference()
                 .child(getString(R.string.dbnode_courses))
@@ -103,9 +105,18 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
                 //.child(FirebaseAuth.getInstance().getCurrentUser().getUid()) this line allows user to insert into only their own database node
+    }
 
-
-
+    private String generateRandomString() {
+        String charPool = "AbCdEFGhIJKLMNoPQRSTuVWxYZ1234567890";
+        StringBuilder str = new StringBuilder();
+        Random rnd = new Random();
+        while (str.length() < 18) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * charPool.length());
+            str.append(charPool.charAt(index));
+        }
+        String genStr = str.toString();
+        return genStr;
 
     }
 
