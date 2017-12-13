@@ -5,5 +5,9 @@
         android:id="@+id/optionSignOut"
         android:title="@string/sign_out"
         />
+    <item
+        android:id="@+id/optionViewCourses"
+        android:title="@string/show_courses"
+        />
 
 </menu>

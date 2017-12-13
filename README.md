@@ -11,14 +11,16 @@ NOTE: For you to have a fully functional project that you can test, go to  https
  Also include the necessary firebase dependencies to both the app level and project level *build.gradle* files
 
 #Requirements
-* Android Version 26 ("Oreo") *
-* Firebase Version 11.0.4 *
+* Android Version 26 ("Oreo") 
+* Firebase Version 11.6.0
 * Android Studio Version 2.3 *
-* Firebase SDK **
-* Google Play Services SDK *
+* Firebase SDK 
+* Google Play Services SDK 
 
 
 #Main Classes and Methods 
 * LoginActivity.java
 * RegisterActivity.java
 * ResendVerificationDialog.java
+* DashboardActivity.java
+* Course.java

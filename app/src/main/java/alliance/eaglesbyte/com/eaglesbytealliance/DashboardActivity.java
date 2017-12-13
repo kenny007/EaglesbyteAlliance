@@ -63,6 +63,13 @@ public class DashboardActivity extends AppCompatActivity {
         });
     }
 
+    private void redirectCourseScreen(){
+        Log.d(TAG, "redirectLoginScreen: redirecting to login screen.");
+
+        Intent intent = new Intent(DashboardActivity.this, CourseActivity.class);
+        startActivity(intent);
+       // finish();
+    }
     /**
      *
      * @param string
@@ -77,6 +84,24 @@ public class DashboardActivity extends AppCompatActivity {
         super.onResume();
         checkAuthenticationState();
     }
+
+    private void checkAuthenticationState(){
+        Log.d(TAG, "checkAuthenticationState: checking authentication state.");
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if(user == null){
+            Log.d(TAG, "checkAuthenticationState: user is null, navigating back to login screen.");
+
+            Intent intent = new Intent(DashboardActivity.this, LoginActivity.class);
+            //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        }else{
+            Log.d(TAG, "checkAuthenticationState: user is authenticated.");
+        }
+    }
+
     private void addNewCourse(String title, String code, String credits){
         showDialog();
 
@@ -87,10 +112,12 @@ public class DashboardActivity extends AppCompatActivity {
         course.setCode(code);
         course.setEcts_credits(credits);
         course.setPrerequisite("1");
-        course.setUser_id(generateRandomString());
+        course.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         FirebaseDatabase.getInstance().getReference()
                 .child(getString(R.string.dbnode_courses))
+                //.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .push()
                 .setValue(course).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -120,22 +147,6 @@ public class DashboardActivity extends AppCompatActivity {
 
     }
 
-    private void checkAuthenticationState(){
-        Log.d(TAG, "checkAuthenticationState: checking authentication state.");
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        if(user == null){
-            Log.d(TAG, "checkAuthenticationState: user is null, navigating back to login screen.");
-
-            Intent intent = new Intent(DashboardActivity.this, LoginActivity.class);
-            //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
-        }else{
-            Log.d(TAG, "checkAuthenticationState: user is authenticated.");
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -148,6 +159,9 @@ public class DashboardActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.optionSignOut:
                 signOut();
+                return true;
+            case R.id.optionViewCourses:
+                redirectCourseScreen();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
